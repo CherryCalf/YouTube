@@ -1,0 +1,115 @@
+html {
+    overflow: hidden;
+}
+
+.quan_vcd_list {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.quan_vcd_list-item {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    background-color: #000000;
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#logo {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+    width: 89px;
+    height: 20px;
+}
+
+.more_father {
+    position: absolute;
+    bottom: 100px;
+    right: 10px;
+    z-index: 1;
+    width: 50px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.more {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+.more_svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+}
+
+.short_wz {
+    position: absolute;
+    bottom: 50px;
+    left: 10px;
+    z-index: 1;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.short_wz_img {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+}
+
+.short_wz_img>div {
+    margin: 5px 5px;
+}
+
+.short_wz_img>div>img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+
+.dy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    border-radius: 25px;
+    height: 32px;
+    width: 48px;
+}
+
+.short_title {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 10px 80px 0 10px;
+}
