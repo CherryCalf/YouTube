@@ -1,10 +1,11 @@
 var li = document.getElementsByTagName("li");
 var ul = document.querySelector("ul");
+var availHeight = window.screen.availHeight;
 function init() {
     //获取屏幕高度
     var height = document.documentElement.clientHeight;
     console.log(height);
-    // 将所有的li的top设置为屏幕高度
+    // 初始化li的位置
     for (var i = 0; i < li.length; i++) {
         li[i].style.top = height * i + "px";
         console.log(li[i].style.top);
@@ -15,42 +16,11 @@ function init() {
 function finit() {
     var height = document.documentElement.clientHeight;
     console.log(height);
-    // 将所有的li的top设置为屏幕高度
+    // 反向初始化li的位置
     for (var i = 0; i < li.length; i++) {
         li[li.length - 1 - i].style.top = "-" + height * i + "px";
-        // console.log(li[i].style.top);
-    }
-    // ul.style.height = height * li.length + "px";
-}
-
-
-
-debounce(scrollFunc, 200);
-// 滚动事件 只限鼠标滚轮的傻逼事件
-var availHeight = window.screen.availHeight;
-var height = 0;
-var scrollFunc = function (e) {
-    if (e.wheelDelta > 0) { //当滑轮向上滚动时
-        console.log("滑轮向上滚动");
-        document.documentElement.scrollTop = height - availHeight;
-        height = document.documentElement.scrollTop;
-    }
-    if (e.wheelDelta < 0) { //当滑轮向下滚动时
-        console.log("滑轮向下滚动");
-        document.documentElement.scrollTop = height + availHeight;
-        height = document.documentElement.scrollTop;
     }
 }
-function debounce(func, wait) {
-    let timeout;
-    return function () {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, arguments), wait);
-    }
-}
-
-window.onmousewheel = document.onmousewheel = debounce(scrollFunc, 200);
-
 
 for (let i = 0; i < li.length; i++) {
     var distanceX, distanceY;
@@ -93,23 +63,13 @@ let box = document.querySelector("li") //
 
 
 let li_sp = Array.from(document.getElementsByClassName("quan_vcd_list-item"));
-function someAction4() {
-    console.log("下，归位")
-    //window.scrollBy(0,Math.abs(distanceY));
-    //document.documentElement.scrollTop = height;
-    //height = document.documentElement.scrollTop;
 
-}
 var someAction1 = debounce(function () {
     console.log("下，下一个")
-    //document.documentElement.scrollTop = height + availHeight;
-    //height = document.documentElement.scrollTop;
     li_sp.forEach(element => {
 
         console.log(li[li.length - 1].style.top);
         if (parseInt(li[li.length - 1].style.top) <= 0) {
-            // element.style.top = 0 + 'px';
-            // console.log(li[li.length - 1].style.top + "asdasdsadp");
             finit();
         } else {
             element.style.top = parseInt(element.style.top) - availHeight + 'px';
@@ -119,15 +79,10 @@ var someAction1 = debounce(function () {
 }, 10);
 
 var someAction2 = debounce(function () {
-    console.log("上划，上一个")
-    //document.documentElement.scrollTop = height - availHeight;
-    //height = document.documentElement.scrollTop;
+    console.log("上，上一个")
     li_sp.forEach(element => {
-
         console.log(li[li.length - 1].style.top);
         if (parseInt(li[0].style.top) >= 0) {
-            // element.style.top = 0 + 'px';
-            // console.log(li[li.length - 1].style.top + "asdasdsadp");
             init();
         } else {
             element.style.top = parseInt(element.style.top) + availHeight + 'px';
@@ -135,14 +90,13 @@ var someAction2 = debounce(function () {
     });
 }, 10);
 
-var someAction3 = debounce(function () {
-    console.log("上划，归位")
-    //document.documentElement.scrollTop = height;
-    //height = document.documentElement.scrollTop;
-}, 10);
 
-var someAction4 = debounce(function () {
-    console.log("下，归位500")
-    //document.documentElement.scrollTop = height;
-    //height = document.documentElement.scrollTop;
-}, 10);
+function debounce(func, wait) {
+    let timeout;
+    return function () {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, arguments), wait);
+    }
+}
+
+window.onmousewheel = document.onmousewheel = debounce(scrollFunc, 50);

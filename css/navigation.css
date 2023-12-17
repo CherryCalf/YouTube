@@ -155,8 +155,10 @@
 
 /* 侧边导航栏 */
 #left_menu {
-    position: absolute;
+    position: fixed;
     display: flex;
+    top: 0;
+    left: 0;
     flex-direction: row;
     width: 100%;
     height: 100%;
